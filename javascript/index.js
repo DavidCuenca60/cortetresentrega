@@ -1,36 +1,36 @@
-const slides = document.querySelectorAll('.itemcarrusel');
-const totalSlides = slides.length;
-let currentIndex = 0;
+const tarjetas = document.querySelectorAll('.itemcarrusel');
+const totalTarjetas = tarjetas.length;
+let actualIndex = 0;
 
 function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.style.display = (i === index) ? 'block' : 'none';
+    tarjetas.forEach((tarjeta, i) => {
+        tarjeta.style.display = (i === index) ? 'block' : 'none';
     });
 }
 
 function nextSlide() {
-    currentIndex = (currentIndex + 1) % totalSlides;
-    showSlide(currentIndex);
+    actualIndex = (actualIndex + 1) % totalTarjetas;
+    showSlide(actualIndex);
 }
 
 function prevSlide() {
-    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    showSlide(currentIndex);
+    actualIndex = (actualIndex - 1 + totalTarjetas) % totalTarjetas;
+    showSlide(actualIndex);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentIndex);
+    showSlide(actualIndex);
     setInterval(nextSlide, 4000);
 
     
-    document.querySelectorAll('.flechascarrusel a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (link.href.includes('left')) {
-                prevSlide();
-            } else {
-                nextSlide();
-            }
+document.querySelectorAll('.flechascarrusel a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (link.href.includes('left')) {
+            prevSlide();
+        } else {
+            nextSlide();
+        }
         });
     });
 });
